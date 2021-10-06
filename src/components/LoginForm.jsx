@@ -4,6 +4,7 @@ import axios from 'axios';
 export default function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { REACT_APP_PROJECT_ID } = process.env
 
   const handleSubmit = async (e) => {
@@ -19,7 +20,7 @@ export default function LoginForm() {
 
       window.location.reload();
     } catch (error) {
-
+        setError('Incorrect login information, please try again.')
     }
   }
 
@@ -47,6 +48,7 @@ export default function LoginForm() {
                 <span>Start Chatting</span>
               </button>
             </div>
+            <h2 className="error">{error}</h2>
           </form>
       </div>
     </div>
